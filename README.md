@@ -9,15 +9,3 @@ Stop ("zstop") processes with a TUI based system monitor that is drop-in compati
 
 </div>
 
-## Missing features
-
-- Process filtering isn't implemented
-
-## Installation
-
-Currently works on Linux and macOS with support planned for all major platforms.
-
-### Prebuilt binaries
-
-Prebuilt binaries are provided in the [releases](https://github.com/sness/ztop/releases) tab.
-
