@@ -51,7 +51,7 @@ pub fn draw_widgets<B: Backend>(frame: &mut Frame<B>, widgets: &mut Widgets, are
 pub fn draw_bottom_row<B: Backend>(frame: &mut Frame<B>, widgets: &mut Widgets, area: Rect) {
 	let horizontal_chunks = Layout::default()
 		.direction(Direction::Horizontal)
-		.constraints([Constraint::Ratio(1, 2), Constraint::Ratio(1, 2)].as_ref())
+		.constraints([Constraint::Ratio(1, 1)].as_ref())
 		.split(area);
 	// if let Some(net) = widgets.net.as_mut() {
 	// 	net.render(frame, horizontal_chunks[0]);
