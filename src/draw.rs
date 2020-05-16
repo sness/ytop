@@ -25,68 +25,27 @@ pub fn draw<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) {
 }
 
 pub fn draw_widgets<B: Backend>(frame: &mut Frame<B>, widgets: &mut Widgets, area: Rect) {
-	if widgets.temp.is_some() {
-		let vertical_chunks = Layout::default()
+	// if widgets.temp.is_some() {
+	 	let vertical_chunks = Layout::default()
 			.direction(Direction::Vertical)
 			.constraints(
 				[
-					Constraint::Ratio(1, 3),
-					Constraint::Ratio(1, 3),
 					Constraint::Ratio(1, 3),
 				]
 				.as_ref(),
 			)
 			.split(area);
-		draw_top_row(frame, widgets, vertical_chunks[0]);
-		draw_middle_row(frame, widgets, vertical_chunks[1]);
-		draw_bottom_row(frame, widgets, vertical_chunks[2]);
-	} else {
-		let vertical_chunks = Layout::default()
-			.direction(Direction::Vertical)
-			.constraints([Constraint::Ratio(1, 2), Constraint::Ratio(1, 2)].as_ref())
-			.split(area);
-		draw_top_row(frame, widgets, vertical_chunks[0]);
-		draw_bottom_row(frame, widgets, vertical_chunks[1]);
-	}
-}
-
-pub fn draw_top_row<B: Backend>(frame: &mut Frame<B>, widgets: &mut Widgets, area: Rect) {
-	if let Some(battery) = widgets.battery.as_mut() {
-		let horizontal_chunks = Layout::default()
-			.direction(Direction::Horizontal)
-			.constraints([Constraint::Ratio(1, 3), Constraint::Ratio(2, 3)].as_ref())
-			.split(area);
-		battery.render(frame, horizontal_chunks[0]);
-		widgets.cpu.render(frame, horizontal_chunks[1]);
-	} else {
-		let horizontal_chunks = Layout::default()
-			.direction(Direction::Horizontal)
-			.constraints([Constraint::Percentage(100)].as_ref())
-			.split(area);
-		widgets.cpu.render(frame, horizontal_chunks[0]);
-	}
-}
-
-pub fn draw_middle_row<B: Backend>(frame: &mut Frame<B>, widgets: &mut Widgets, area: Rect) {
-	let horizontal_chunks = Layout::default()
-		.direction(Direction::Horizontal)
-		.constraints([Constraint::Ratio(1, 3), Constraint::Ratio(2, 3)].as_ref())
-		.split(area);
-	widgets.mem.render(frame, horizontal_chunks[1]);
-	let vertical_chunks = Layout::default()
-		.direction(Direction::Vertical)
-		.constraints([Constraint::Ratio(1, 2), Constraint::Ratio(1, 2)].as_ref())
-		.split(horizontal_chunks[0]);
-	widgets
-		.disk
-		.as_mut()
-		.unwrap()
-		.render(frame, vertical_chunks[0]);
-	widgets
-		.temp
-		.as_mut()
-		.unwrap()
-		.render(frame, vertical_chunks[1]);
+		// draw_top_row(frame, widgets, vertical_chunks[0]);
+		// draw_middle_row(frame, widgets, vertical_chunks[1]);
+		draw_bottom_row(frame, widgets, vertical_chunks[0]);
+	// } else {
+	// 	let vertical_chunks = Layout::default()
+	// 		.direction(Direction::Vertical)
+	// 		.constraints([Constraint::Ratio(1, 2), Constraint::Ratio(1, 2)].as_ref())
+	// 		.split(area);
+	// 	draw_top_row(frame, widgets, vertical_chunks[0]);
+	// 	draw_bottom_row(frame, widgets, vertical_chunks[1]);
+	// }
 }
 
 pub fn draw_bottom_row<B: Backend>(frame: &mut Frame<B>, widgets: &mut Widgets, area: Rect) {
@@ -94,12 +53,12 @@ pub fn draw_bottom_row<B: Backend>(frame: &mut Frame<B>, widgets: &mut Widgets, 
 		.direction(Direction::Horizontal)
 		.constraints([Constraint::Ratio(1, 2), Constraint::Ratio(1, 2)].as_ref())
 		.split(area);
-	if let Some(net) = widgets.net.as_mut() {
-		net.render(frame, horizontal_chunks[0]);
-	} else {
-		widgets.mem.render(frame, horizontal_chunks[0]);
-	}
-	widgets.proc.render(frame, horizontal_chunks[1]);
+	// if let Some(net) = widgets.net.as_mut() {
+	// 	net.render(frame, horizontal_chunks[0]);
+	// } else {
+	// 	widgets.mem.render(frame, horizontal_chunks[0]);
+	// }
+	widgets.proc.render(frame, horizontal_chunks[0]);
 }
 
 pub fn draw_help_menu<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) {
