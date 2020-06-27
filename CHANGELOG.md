@@ -15,6 +15,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2020-05-16
+
+Forked this awesome project as ztop
+drop-in feature-complete replacement for htop
+looks identical to htop without customization
+ztop lets you stop something by pressing return
+fastest top program
+but a lot faster
+optimized for use with alacritty
+only uses termio
+
+
+
 ## [0.6.0] - 2020-04-21
 
 ### Added
